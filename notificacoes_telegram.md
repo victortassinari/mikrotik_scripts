@@ -63,6 +63,7 @@ Este documento oferece um guia passo a passo para criar um bot no Telegram e int
 ```
 
 Este script, ao ser executado, ativa uma rota e envia uma mensagem de notificação para o Telegram indicando que a conexão principal está online.
+
 ------
 ### Passo 5: Notificação no Telegram na Inicialização do Sistema
 
