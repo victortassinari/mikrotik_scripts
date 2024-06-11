@@ -58,7 +58,7 @@ Este documento oferece um guia passo a passo para criar um bot no Telegram e int
 # Aqui é como o script para enviar a mensagem pelo Telegram deve ser chamado
 /system script run telegram-send-function {
   :global TelegramSend
-  $TelegramSend "Link 1 está online"
+  $TelegramSend "Link Principal CityNet Online"
 }
 ```
 
