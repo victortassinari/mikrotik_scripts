@@ -70,15 +70,11 @@ Este passo adicional envolve configurar uma notificação automática para ser e
 
 #### Criar o Script "initialize-message"
 
-1. Acessar o Winbox
-
-   :
+1. Acessar o Winbox:
 
    - Vá para `System > Scripts`.
 
-2. Criar um novo script
-
-   :
+2. Criar um novo script:
 
    - Clique em `+` para adicionar um novo script e nomeie-o como `initialize-message`.
    - Insira o seguinte conteúdo no script:
@@ -108,15 +104,11 @@ Este passo adicional envolve configurar uma notificação automática para ser e
 
 #### Criar uma Tarefa no Scheduler
 
-1. Acessar o Scheduler
-
-   :
+1. Acessar o Scheduler:
 
    - No Winbox, vá para `System > Scheduler`.
 
-2. Adicionar uma nova tarefa
-
-   :
+2. Adicionar uma nova tarefa:
 
    - Clique em `+` para adicionar uma nova tarefa.
    - Nomeie a tarefa como `startup`.
