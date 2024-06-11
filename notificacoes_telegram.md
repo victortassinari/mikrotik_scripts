@@ -64,3 +64,68 @@ Este documento oferece um guia passo a passo para criar um bot no Telegram e int
 
 Este script, ao ser executado, ativa uma rota e envia uma mensagem de notificação para o Telegram indicando que a conexão principal está online.
 
+### Passo 5: Notificação no Telegram na Inicialização do Sistema
+
+Este passo adicional envolve configurar uma notificação automática para ser enviada via Telegram sempre que o RouterOS (MikroTik) for reiniciado, garantindo que você seja notificado sobre a reinicialização do sistema e o status da conexão à internet.
+
+#### Criar o Script "initialize-message"
+
+1. Acessar o Winbox
+
+   :
+
+   - Vá para `System > Scripts`.
+
+2. Criar um novo script
+
+   :
+
+   - Clique em `+` para adicionar um novo script e nomeie-o como `initialize-message`.
+   - Insira o seguinte conteúdo no script:
+
+```
+:global message "Sistema reiniciado"
+
+:local internetActive false
+:local attempt 0
+:while ($internetActive = false && $attempt < 30) do={
+    :set attempt ($attempt + 1)
+    :log info "Tentativa de verificação de conexão #$attempt"
+    :local pingResult [/ping 8.8.8.8 count=1]
+    if ($pingResult > 0) do={
+        :set internetActive true
+        :log info "Conexão com a internet estabelecida, enviando mensagem."
+        /system script run telegram-send-function {
+            :global TelegramSend
+            $TelegramSend "RB inicializada"
+        }
+    } else={
+        :log info "Conexão com a internet falhou, nova tentativa em 10 segundos."
+        :delay 10s
+    }
+}
+```
+
+#### Criar uma Tarefa no Scheduler
+
+1. Acessar o Scheduler
+
+   :
+
+   - No Winbox, vá para `System > Scheduler`.
+
+2. Adicionar uma nova tarefa
+
+   :
+
+   - Clique em `+` para adicionar uma nova tarefa.
+   - Nomeie a tarefa como `startup`.
+   - No campo `Start Time`, escolha `startup`.
+   - No campo `On Event`, insira o seguinte comando para executar o script criado:
+
+```
+/system script run initialize-message
+```
+
+Este procedimento garantirá que a mensagem "RB inicializada" seja enviada para seu Telegram sempre que o sistema for reiniciado, após verificar e confirmar que a conexão à internet está ativa.
+
