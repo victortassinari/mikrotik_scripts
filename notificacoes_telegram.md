@@ -63,7 +63,7 @@ Este documento oferece um guia passo a passo para criar um bot no Telegram e int
 ```
 
 Este script, ao ser executado, ativa uma rota e envia uma mensagem de notificação para o Telegram indicando que a conexão principal está online.
-
+------
 ### Passo 5: Notificação no Telegram na Inicialização do Sistema
 
 Este passo adicional envolve configurar uma notificação automática para ser enviada via Telegram sempre que o RouterOS (MikroTik) for reiniciado, garantindo que você seja notificado sobre a reinicialização do sistema e o status da conexão à internet.
